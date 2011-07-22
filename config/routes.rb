@@ -1,4 +1,20 @@
 Klave::Application.routes.draw do
+
+
+  devise_for :users, :controllers => { :sessions => "users/sessions" }
+
+  resources :comments
+
+  resources :courses
+
+  resources :semesters
+
+  resources :lecturers
+
+  resources :documents
+
+  root :to => 'documents#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
