@@ -41,6 +41,12 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new(params[:document])
     @document.user= current_user
+    @document.content_file_size= 0
+    @document.content_type=
+    @document.content_filename=
+    @document.
+
+
     respond_to do |format|
       if @document.save
         format.html { redirect_to @document, notice: 'Document was successfully created.' }

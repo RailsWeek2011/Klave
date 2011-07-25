@@ -1,7 +1,7 @@
 Klave::Application.routes.draw do
 
 
-  devise_for :users, :controllers => { :sessions => "users/sessions" }
+  devise_for :users, :controllers => { :sessions => "devise/sessions" }
 
   resources :comments
 
