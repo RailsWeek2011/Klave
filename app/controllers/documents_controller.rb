@@ -41,10 +41,9 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new(params[:document])
     @document.user= current_user
-    @document.content_file_size= 0
-    @document.content_type=
-    @document.content_filename=
-    @document.
+    #TODO:
+   # @document.file_size= 0
+    #@document.file_name=
 
 
     respond_to do |format|

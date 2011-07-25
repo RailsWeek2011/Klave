@@ -2,9 +2,9 @@
 
 <table>
   <tr>
-    <th>Content filename</th>
-    <th>Content type</th>
-    <th>Content file size</th>
+    <th>Filename</th>
+    <th>Filetype</th>
+    <th>Filezsize</th>
     <th>Caption</th>
     <th>Description</th>
     <th>Created at</th>
@@ -16,9 +16,9 @@
 
 <% @documents.each do |document| %>
   <tr>
-    <td><%= document.content_filename %></td>
-    <td><%= document.content_type %></td>
-    <td><%= document.content_file_size %></td>
+    <td><%= document.file_name %></td>
+    <td><%= document.file_type %></td>
+    <td><%= document.file_size %></td>
     <td><%= document.caption %></td>
     <td><%= document.description %></td>
     <td><%= document.created_at %></td>
