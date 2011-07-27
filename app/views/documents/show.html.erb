@@ -31,9 +31,55 @@
 </p>
 
 <p>
-  <b>User:</b>
-  <%= @document.user_id %>
+  <b>Uploader:</b>
+  <%= @document.user.email %>
 </p>
+
+<p>
+  <b>Lecturer:</b>
+  <%= @document.lecturer.name %>
+</p>
+<p>
+  <b>Semester:</b>
+  <%= @document.semester.name %>
+</p>
+<p>
+  <b>Course:</b>
+  <%= @document.course.name %>
+</p>
+<p>
+  <%= link_to "Download", @document.file_path.to_s %>
+
+</p>
+
+<h2>Comments</h2>
+<% @document.comments.each do |comment| %>
+  <p>
+    <b>Author:</b>
+    <%= comment.user.name %>
+  </p>
+     <p>
+    <b>Date:</b>
+    <%= comment.created_at %>
+  </p>
+  <p>
+    <b>Comment:</b>
+    <%= comment.text %>
+  </p>
+<% end %>
+
+ <h2>Add a comment:</h2>
+<%= form_for([@document, @document.comments.build]) do |f| %>
+
+  <div class="field">
+    <%= f.label :text %><br />
+    <%= f.text_area :text %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
 
 
 <%= link_to 'Edit', edit_document_path(@document) %> |

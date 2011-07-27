@@ -5,6 +5,7 @@
     <th>Author</th>
     <th>Authormail</th>
     <th>Text</th>
+     <th>Dokument Caption</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,7 +14,7 @@
 <% @comments.each do |comment| %>
   <tr>
     <td><%= comment.author %></td>
-    <td><%= comment.authormail %></td>
+    <td><%= comment.author_mail %></td>
     <td><%= comment.text %></td>
     <td><%= link_to 'Show', comment %></td>
     <td><%= link_to 'Edit', edit_comment_path(comment) %></td>

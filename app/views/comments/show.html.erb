@@ -7,14 +7,13 @@
 
 <p>
   <b>Authormail:</b>
-  <%= @comment.authormail %>
+  <%= @comment.author_mail %>
 </p>
 
 <p>
   <b>Text:</b>
   <%= @comment.text %>
 </p>
-
 
 <%= link_to 'Edit', edit_comment_path(@comment) %> |
 <%= link_to 'Back', comments_path %>

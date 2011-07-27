@@ -9,7 +9,9 @@ class CreateDocuments < ActiveRecord::Migration
       t.integer :user_id
       t.string :file_name
       t.string :file_path
-
+      t.integer :lecturer_id
+      t.integer :course_id
+      t.integer :semester_id
       t.timestamps
     end
   end

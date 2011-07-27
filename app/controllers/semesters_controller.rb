@@ -1,4 +1,5 @@
 class SemestersController < ApplicationController
+   before_filter :authenticate_user!
   # GET /semesters
   # GET /semesters.json
   def index
@@ -44,7 +45,7 @@ class SemestersController < ApplicationController
 
     respond_to do |format|
       if @semester.save
-        format.html { redirect_to @semester, notice: 'Semester was successfully created.' }
+        format.html { redirect_to new_document_path, notice: 'Semester was successfully created.' }
         format.json { render json: @semester, status: :created, location: @semester }
       else
         format.html { render action: "new" }

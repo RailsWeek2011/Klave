@@ -23,6 +23,26 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
+
+  <div class="field">
+    <%= f.label :lecturer %><br />
+    <%= f.collection_select :lecturer_id, Lecturer.all, :id, :name   %>
+    <%= link_to "+", new_lecturer_path %>
+  </div>
+
+      <div class="field">
+    <%= f.label :semester %><br />
+    <%= f.collection_select :semester_id, Semester.all, :id, :name   %>
+    <%= link_to "+", new_semester_path %>
+  </div>
+
+      <div class="field">
+    <%= f.label :course %><br />
+    <%= f.collection_select :course_id, Course.all, :id, :name   %>
+    <%= link_to "+", new_course_path %>
+  </div>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

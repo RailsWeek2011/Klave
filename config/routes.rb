@@ -3,15 +3,15 @@ Klave::Application.routes.draw do
 
   devise_for :users, :controllers => { :sessions => "devise/sessions" }
 
+resources :documents do
   resources :comments
-
+end
   resources :courses
 
   resources :semesters
 
   resources :lecturers
 
-  resources :documents
 
   root :to => 'documents#index'
 

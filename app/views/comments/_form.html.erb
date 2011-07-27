@@ -1,3 +1,4 @@
+Related Document: <%= params[:document] %>
 <%= form_for(@comment) do |f| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
@@ -16,12 +17,12 @@
     <%= f.text_field :author %>
   </div>
   <div class="field">
-    <%= f.label :authormail %><br />
-    <%= f.text_field :authormail %>
+    <%= f.label :author_mail %><br />
+    <%= f.text_field :author_mail %>
   </div>
   <div class="field">
     <%= f.label :text %><br />
-    <%= f.text_field :text %>
+    <%= f.text_area :text %>
   </div>
   <div class="actions">
     <%= f.submit %>

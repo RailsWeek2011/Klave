@@ -1,4 +1,5 @@
 class DocumentsController < ApplicationController
+    before_filter :authenticate_user!, :except => [:index, :show]
   # GET /documents
   # GET /documents.json
   def index
@@ -41,9 +42,10 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new(params[:document])
     @document.user= current_user
-    #TODO:
-   # @document.file_size= 0
-    #@document.file_name=
+    #TODO: die folgenden Informationen extrahieren
+   #@document.file_size= File.size(params[:document][:file_path].tempfile)
+    @document.file_name= params[:document][:file_path].original_filename
+    @document.file_type= params[:document][:file_path].content_type
 
 
     respond_to do |format|

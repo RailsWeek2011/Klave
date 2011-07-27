@@ -13,9 +13,9 @@
 ActiveRecord::Schema.define(:version => 20110722095916) do
 
   create_table "comments", :force => true do |t|
-    t.string   "author"
-    t.string   "authormail"
+    t.integer  "user_id"
     t.string   "text"
+    t.integer  "document_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(:version => 20110722095916) do
     t.integer  "user_id"
     t.string   "file_name"
     t.string   "file_path"
+    t.integer  "lecturer_id"
+    t.integer  "course_id"
+    t.integer  "semester_id"
     t.datetime "updated_at"
   end
 
@@ -61,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20110722095916) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin",                                 :default => false

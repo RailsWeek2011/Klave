@@ -1,4 +1,5 @@
 class LecturersController < ApplicationController
+   before_filter :authenticate_user!
   # GET /lecturers
   # GET /lecturers.json
   def index
@@ -43,8 +44,9 @@ class LecturersController < ApplicationController
     @lecturer = Lecturer.new(params[:lecturer])
 
     respond_to do |format|
-      if @lecturer.save
-        format.html { redirect_to @lecturer, notice: 'Lecturer was successfully created.' }
+      if @lecturer.save     #
+
+        format.html { redirect_to new_document_path, notice: 'Lecturer was successfully created.' }
         format.json { render json: @lecturer, status: :created, location: @lecturer }
       else
         format.html { render action: "new" }

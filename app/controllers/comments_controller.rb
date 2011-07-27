@@ -41,10 +41,13 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(params[:comment])
-
+    @comment.document_id= params[:document_id]
+    @comment.user_id= current_user.id
+    @document = Document.find(params[:document_id])
+   # @comment = @document.comments.create(params[:comment])
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to document_path(@document), notice: 'Comment was successfully created.' }
         format.json { render json: @comment, status: :created, location: @comment }
       else
         format.html { render action: "new" }
@@ -52,6 +55,13 @@ class CommentsController < ApplicationController
       end
     end
   end
+
+#  def create
+#    @document = Document.find(params[:document_id])
+#    @comment = @document.comments.create(params[:comment])
+#    @comment.user_id = current_user.id
+#    redirect_to document_path(@document)
+#  end
 
   # PUT /comments/1
   # PUT /comments/1.json
