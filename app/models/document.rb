@@ -30,12 +30,16 @@ class Document < ActiveRecord::Base
   #end
 
   def self.filter(params = {})
+
     condition = {}
     condition[:semester_id] = params[:semester_id] if params[:semester_id]
-
-
     condition[:course_id] = params[:course_id] if params[:course_id]
     condition[:lecturer_id] = params[:lecturer_id] if params[:lecturer_id]
+
+    condition.each  {
+      |e| e = " " if e == 0
+    }
+
 
     where condition
   end

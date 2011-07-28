@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-    before_filter :authenticate_user!, :except => [:index, :show, :filter]
+    before_filter :authenticate_user!, :except => [:index, :show]
     #before_filter :is_admin?, :except => [:index, :show, :new :create]
 
 
