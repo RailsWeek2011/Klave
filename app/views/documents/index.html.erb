@@ -1,31 +1,33 @@
-<h1>Listing documents</h1>
+<h1>Klave - Klausurverwaltung</h1>
 <%# Document.tagged_with("OOP").by_date.paginate(:page => params[:page], :per_page => 20) %>
-
+<div id="filter">
 <%= form_tag documents_path, :method => 'get' do %>
     <%= label_tag :semester %>
-    <%= collection_select(nil, :semester_id, Semester.all, :id, :name, { :include_blank => true })  %>
+    <%= collection_select(nil, :semester_id, Semester.all.sort_by {|semester| semester.name}, :id, :name, { :include_blank => true,:selected => params[:semester_id] })  %>
     <%= label_tag :course %>
-    <%= collection_select( nil, :course_id, Course.all, :id, :name, { :include_blank => true })  %>
+    <%= collection_select( nil, :course_id, Course.all.sort_by {|course| course.name}, :id, :name, { :include_blank => true,:selected => params[:course_id] })  %>
     <%= label_tag  :lecturer %>
-    <%= collection_select(nil, :lecturer_id, Lecturer.all, :id, :name, { :include_blank => true })  %>
-    <%= label_tag  :tags %>
-    <%= text_field_tag :filter, params[:filter] %>
+    <%= collection_select(nil, :lecturer_id, Lecturer.all.sort_by {|lecturer| lecturer.name}, :id, :name, { :include_blank => true,:selected => params[:lecturer_id] })  %>
+    <%# label_tag  :tags %>
+    <%# text_field_tag :filter, params[:filter] %>
     <%= submit_tag "Filter", :name => nil %>
 <% end %>
+</div>
 
-
-
+<div id="list">
 <table>
   <tr>
     <th>Filename</th>
     <th>Filetype</th>
-    <th>Filezsize</th>
+    <%# <th>Filezsize</th> %>
     <th>Caption</th>
     <th>Description</th>
     <th>Created at</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
+    <th>Uploader</th>
+    <th>Semester</th>
+    <th>Course</th>
+    <th>Lecturer</th>
+    <th>Comments</th>
     <th></th>
   </tr>
 
@@ -35,17 +37,23 @@
   <tr>
     <td><%= document.file_name %></td>
     <td><%= document.file_type %></td>
-    <td><%= document.file_size %></td>
+    <%#<td>  document.file_size </td> %>
     <td><%= document.caption %></td>
     <td><%= document.description %></td>
     <td><%= document.created_at %></td>
     <td><%= document.user.name %></td>
+    <td><%= document.semester.name %></td>
+    <td><%= document.course.name %></td>
+    <td><%= document.lecturer.name %></td>
+    <td><%= document.comments.size %></td>
+
     <td><%= link_to 'Show', document %></td>
-    <td><%= link_to 'Edit', edit_document_path(document) %></td>
-    <td><%= link_to 'Destroy', document, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%# link_to 'Edit', edit_document_path(document) %></td>
+    <td><%# link_to 'Destroy', document, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
+</div>
 
 <br />
 

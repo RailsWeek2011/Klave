@@ -31,17 +31,23 @@ class Document < ActiveRecord::Base
 
   def self.filter(params = {})
 
-    condition = {}
+
+    condition ={}
     condition[:semester_id] = params[:semester_id] if params[:semester_id]
     condition[:course_id] = params[:course_id] if params[:course_id]
     condition[:lecturer_id] = params[:lecturer_id] if params[:lecturer_id]
-
-    condition.each  {
-      |e| e = " " if e == 0
-    }
+   # condition[:tag_list] = params[:filter] if params[:filter]
+    condition.each_pair { |key,value| condition.delete key if value == "" }
 
 
-    where condition
+    documents = where condition
+    #documents.each { |document|
+      #  if (params[:filter].to_s.split(' ').select do |tag|   document.tag_list.to_s.split(', ').include? tag end).blank?
+
+      #  end
+      #  }
+        documents
+
   end
 
 end

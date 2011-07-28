@@ -7,6 +7,7 @@ class DocumentsController < ApplicationController
   # GET /documents.json
   def index
    # @documents = Document.all
+    params.delete :utf8
     @documents = Document.filter(params)
     respond_to do |format|
       format.html # index.html.erb

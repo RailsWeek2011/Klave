@@ -21,11 +21,11 @@ Features:
                      [x] Upload von Klausuren
                      [x] Anmeldung für Uploader
                      [x] Kommentarfunktion zu Dokumenten
-                     [ ] Filterfunktion für Klausuren
+                     [x] Filterfunktion für Klausuren
 
 Nice To Have:
                      [ ] Unterscheidung von Klausuren / Scripten / Übungen
                      [ ] Dokumentupdate Funktion und Verlauf
                      [ ] Eingeschränkte Rechte ( Dokumente löschen/bearbeiten,
-                         Kommentare löschen/bearbeiten ) für einfache Benutzer
+                         Kommentare löschen/bearbeiten, hinzufügen/entfernen von Kursen, Semestern, Dozenten ) für einfache angemeldete Benutzer
                      [ ] 'Suche' über Tags

@@ -60,6 +60,22 @@
       <column name="name" sqlType="" length="2000000000" precision="10" nullable="true" jdbcType="12" />
       <column name="seq" sqlType="" length="2000000000" precision="10" nullable="true" jdbcType="12" />
     </table>
+    <table name="TAGGINGS" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="tag_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="taggable_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="taggable_type" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="tagger_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="tagger_type" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="context" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="created_at" sqlType="DATETIME" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <primary-key columns="id" />
+    </table>
+    <table name="TAGS" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="name" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <primary-key columns="id" />
+    </table>
     <table name="USERS" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="12" />
       <column name="email" sqlType="VARCHAR(255)" length="2000000000" precision="10" nullable="false" jdbcType="12" />
