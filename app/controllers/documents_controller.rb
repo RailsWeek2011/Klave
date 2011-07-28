@@ -1,15 +1,20 @@
 class DocumentsController < ApplicationController
-    before_filter :authenticate_user!, :except => [:index, :show]
+    before_filter :authenticate_user!, :except => [:index, :show, :filter]
+    #before_filter :is_admin?, :except => [:index, :show, :new :create]
+
+
   # GET /documents
   # GET /documents.json
   def index
-    @documents = Document.all
-
+   # @documents = Document.all
+    @documents = Document.filter(params)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @documents }
     end
   end
+
+
 
   # GET /documents/1
   # GET /documents/1.json
@@ -44,10 +49,6 @@ class DocumentsController < ApplicationController
     @document.user= current_user
     #TODO: die folgenden Informationen extrahieren
    #@document.file_size= File.size(params[:document][:file_path].tempfile)
-    @document.file_name= params[:document][:file_path].original_filename
-    @document.file_type= params[:document][:file_path].content_type
-
-
     respond_to do |format|
       if @document.save
         format.html { redirect_to @document, notice: 'Document was successfully created.' }
@@ -86,4 +87,12 @@ class DocumentsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  protected
+      def is_admin?
+        unless current_user.try(:admin?)
+          redirect_to :back
+          flash[:alert] = "Access denied! Lack of permissions"
+        end
+      end
 end

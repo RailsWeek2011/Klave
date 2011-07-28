@@ -17,4 +17,15 @@ Featureliste:
 - Screw you guys, i'm going home.
 
 
-This file was modified by JetBrains RubyMine 3.2.1 for binding GitHub repository
+Features:
+                     [x] Upload von Klausuren
+                     [x] Anmeldung für Uploader
+                     [x] Kommentarfunktion zu Dokumenten
+                     [ ] Filterfunktion für Klausuren
+
+Nice To Have:
+                     [ ] Unterscheidung von Klausuren / Scripten / Übungen
+                     [ ] Dokumentupdate Funktion und Verlauf
+                     [ ] Eingeschränkte Rechte ( Dokumente löschen/bearbeiten,
+                         Kommentare löschen/bearbeiten ) für einfache Benutzer
+                     [ ] 'Suche' über Tags

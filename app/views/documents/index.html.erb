@@ -1,4 +1,19 @@
 <h1>Listing documents</h1>
+<%# Document.tagged_with("OOP").by_date.paginate(:page => params[:page], :per_page => 20) %>
+
+<%= form_tag documents_path, :method => 'get' do %>
+    <%= label_tag :semester %>
+    <%= collection_select(:semester, :semester_id, Semester.all, :id, :name, { :include_blank => true })  %>
+    <%= label_tag :course %>
+    <%= collection_select( :course, :course_id, Course.all, :id, :name, { :include_blank => true })  %>
+    <%= label_tag  :lecturer %>
+    <%= collection_select(:lecturer, :lecturer_id, Lecturer.all, :id, :name, { :include_blank => true })  %>
+    <%= label_tag  :tags %>
+    <%= text_field_tag :filter, params[:filter] %>
+    <%= submit_tag "Filter", :name => nil %>
+<% end %>
+
+
 
 <table>
   <tr>
@@ -15,6 +30,8 @@
   </tr>
 
 <% @documents.each do |document| %>
+<%# Document.tagged_with(params[:filter]).each do |document| %>
+
   <tr>
     <td><%= document.file_name %></td>
     <td><%= document.file_type %></td>
@@ -33,3 +50,4 @@
 <br />
 
 <%= link_to 'New Document', new_document_path %>
+
