@@ -3,11 +3,11 @@
 
 <%= form_tag documents_path, :method => 'get' do %>
     <%= label_tag :semester %>
-    <%= collection_select(:semester, :semester_id, Semester.all, :id, :name, { :include_blank => true })  %>
+    <%= collection_select(nil, :semester_id, Semester.all, :id, :name, { :include_blank => true })  %>
     <%= label_tag :course %>
-    <%= collection_select( :course, :course_id, Course.all, :id, :name, { :include_blank => true })  %>
+    <%= collection_select( nil, :course_id, Course.all, :id, :name, { :include_blank => true })  %>
     <%= label_tag  :lecturer %>
-    <%= collection_select(:lecturer, :lecturer_id, Lecturer.all, :id, :name, { :include_blank => true })  %>
+    <%= collection_select(nil, :lecturer_id, Lecturer.all, :id, :name, { :include_blank => true })  %>
     <%= label_tag  :tags %>
     <%= text_field_tag :filter, params[:filter] %>
     <%= submit_tag "Filter", :name => nil %>

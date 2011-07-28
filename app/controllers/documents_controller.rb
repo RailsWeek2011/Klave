@@ -49,6 +49,9 @@ class DocumentsController < ApplicationController
     @document.user= current_user
     #TODO: die folgenden Informationen extrahieren
    #@document.file_size= File.size(params[:document][:file_path].tempfile)
+        @document.file_name= params[:document][:file_path].original_filename
+    @document.file_type= params[:document][:file_path].content_type
+    @document.tag_list = @document.course.name, @document.lecturer.name, @document.semester.name, @document.user.name
     respond_to do |format|
       if @document.save
         format.html { redirect_to @document, notice: 'Document was successfully created.' }

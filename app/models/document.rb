@@ -18,24 +18,24 @@ class Document < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   mount_uploader :file_path, BinfileUploader
 
-  before_save :set_file_info
+  #before_save :set_file_info
 
 
-  def set_file_info
+  #def set_file_info
 
-    self.file_name= params[:document][:file_path].original_filename
-    self.file_type= params[:document][:file_path].content_type
-    self.tag_list = self.course.name, self.lecturer.name, self.semester.name, self.user.name
+  #  self.file_name= params[:document][:file_path].original_filename
+  #  self.file_type= params[:document][:file_path].content_type
+  #  self.tag_list = self.course.name, self.lecturer.name, self.semester.name, self.user.name
 
-  end
+  #end
 
   def self.filter(params = {})
     condition = {}
-    condition[:semester_id] = params[:semester][:semester_id] if params[:semester] && params[:semester][:semester_id]
+    condition[:semester_id] = params[:semester_id] if params[:semester_id]
 
 
-    condition[:course_id] = params[:course][:course_id] if params[:course] && params[:course][:course_id]
-    condition[:lecturer_id] = params[:lecturer][:lecturer_id] if params[:lecturer] && params[:lecturer][:lecturer_id]
+    condition[:course_id] = params[:course_id] if params[:course_id]
+    condition[:lecturer_id] = params[:lecturer_id] if params[:lecturer_id]
 
     where condition
   end
