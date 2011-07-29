@@ -14,46 +14,48 @@
 <% end %>
 </div>
 
-<div id="list">
 <table>
-  <tr>
-    <th>Filename</th>
-    <th>Filetype</th>
+  <tr class="list">
     <%# <th>Filezsize</th> %>
     <th>Caption</th>
     <th>Description</th>
-    <th>Created at</th>
-    <th>Uploader</th>
     <th>Semester</th>
     <th>Course</th>
     <th>Lecturer</th>
+    <th>Created at</th>
+    <th>Uploader</th>
+    <th>Filename</th>
+    <th>Filetype</th>
     <th>Comments</th>
     <th></th>
+    <th></th>
+    <th></th>
+
+
+
   </tr>
 
 <% @documents.each do |document| %>
 <%# Document.tagged_with(params[:filter]).each do |document| %>
-
-  <tr>
-    <td><%= document.file_name %></td>
-    <td><%= document.file_type %></td>
+ <tr class="list">
     <%#<td>  document.file_size </td> %>
     <td><%= document.caption %></td>
-    <td><%= document.description %></td>
-    <td><%= document.created_at %></td>
-    <td><%= document.user.name %></td>
+    <td><%= document.description[0...23]+ ".."%></td>
     <td><%= document.semester.name %></td>
     <td><%= document.course.name %></td>
     <td><%= document.lecturer.name %></td>
+    <td><%= document.created_at %></td>
+    <td><%= document.user.name %></td>
+    <td><%= link_to document.file_name, document.file_path.to_s %></td>
+    <td><%= document.file_type %></td>
     <td><%= document.comments.size %></td>
-
     <td><%= link_to 'Show', document %></td>
-    <td><%# link_to 'Edit', edit_document_path(document) %></td>
-    <td><%# link_to 'Destroy', document, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= current_user && current_user.admin? ? link_to('Edit', edit_document_path(document)) :""  %></td>
+    <td><%= current_user && current_user.admin? ? link_to('Destroy', document, confirm: 'Are you sure?', method: :delete):"" %></td>
   </tr>
 <% end %>
 </table>
-</div>
+
 
 <br />
 

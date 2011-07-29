@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
     before_filter :authenticate_user!, :except => [:index, :show]
-    #before_filter :is_admin?, :except => [:index, :show, :new :create]
+    before_filter :is_admin?,  :except => [:index, :show, :new, :create]
 
 
   # GET /documents
@@ -92,11 +92,5 @@ class DocumentsController < ApplicationController
     end
   end
 
-  protected
-      def is_admin?
-        unless current_user.try(:admin?)
-          redirect_to :back
-          flash[:alert] = "Access denied! Lack of permissions"
-        end
-      end
+
 end

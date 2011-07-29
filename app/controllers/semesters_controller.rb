@@ -1,5 +1,7 @@
 class SemestersController < ApplicationController
    before_filter :authenticate_user!
+   before_filter :is_admin?,  :except => [:index, :show, :new, :create]
+
   # GET /semesters
   # GET /semesters.json
   def index

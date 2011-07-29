@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
    before_filter :authenticate_user!
+    before_filter :is_admin?,  :except => [:index, :show, :new, :create]
   # GET /courses
   # GET /courses.json
   def index
